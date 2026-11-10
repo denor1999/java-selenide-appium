@@ -14,4 +14,7 @@ public interface AuthConfig extends Config {
 
     @Key("browserstack.key")
     String key();
+
+    @Key("browserstack.app")
+    String app();
 }

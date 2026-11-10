@@ -27,7 +27,12 @@ dependencies {
 tasks.withType(Test) {
     useJUnitPlatform()
     systemProperties(System.getProperties())
-
+    def platform = System.getProperty('platform')
+    if (platform) {
+        filter {
+            includeTestsMatching "*${platform.capitalize()}*"
+        }
+    }
     testLogging {
         lifecycle {
             events "started", "skipped", "failed", "standard-error", "standard-out"

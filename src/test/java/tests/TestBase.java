@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
 
-public class TestBase {
+public abstract class TestBase {
 
     @BeforeAll
     static void configureSelenide() {
@@ -21,8 +21,11 @@ public class TestBase {
 
     @BeforeEach
     void setup() {
+        System.setProperty("platform", platform());
         open();
     }
+
+    protected abstract String platform();
 
     @AfterEach
     void teardown() {
